@@ -3,7 +3,7 @@ const { Storage } = require('@google-cloud/storage')
 class Firebase {
     constructor() {
         this.storage = new Storage({
-            keyFilename: `${__dirname}/outfit-7e104-firebase-adminsdk-xpbv8-0ed6e0d714.json`,
+            keyFilename: `${__dirname}/outfit-7e104-firebase-adminsdk-xpbv8-0ed6e0d714.json`, // YOUR FIREBASE ADMIN_SDK PATHE HERE
         })
         this.bucketName = 'gs://outfit-7e104.appspot.com/'
     }
