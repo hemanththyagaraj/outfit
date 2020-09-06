@@ -3,3 +3,7 @@
 node_modules
 utils/outfit-7e104-firebase-adminsdk-xpbv8-0ed6e0d714.json
 config.env
+
+# ignore client folders
+client/node_modules
+client/build
