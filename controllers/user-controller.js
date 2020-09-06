@@ -6,7 +6,6 @@ const User = require('../models/user-model')
 //route           POST /api/v1/users
 //desc            Register a new user
 //access          Public
-
 exports.registerUser = async (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -17,21 +16,26 @@ exports.registerUser = async (req, res) => {
     }
 
     try {
-        let { name, email, password, role } = req.body
-        const user = await User.findOne({ email })
+        const { name, email, password, role, avatar } = req.body
+        const isExisting = await User.findOne({ email })
 
-        if (user) throw new Error('User already exists')
+        if (isExisting) throw new Error('User with this email already exists')
 
         const salt = await bcrypt.genSalt(10)
         const hash = await bcrypt.hash(password, salt)
 
-        const newUser = await User.create({ name, email, password: hash, role })
+        const newUser = await User.create({ name, email, password: hash, role, avatar })
+        const user = newUser._doc
+        delete user.password
 
         jwt.sign({ user: { id: newUser._id } }, process.env.JWT_SECRET, { expiresIn: 36000 }, (err, token) =>{
             if (err) throw new Error('Failed to sign the token')
             else res.status(200).json({
                 status: 'success',
-                token
+                user: {
+                    ...user,
+                    token
+                }
             })
         })
         

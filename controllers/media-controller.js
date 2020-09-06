@@ -5,7 +5,6 @@ const Firebase = require('../utils/firebase-storage')
 //route             POST  /api/v1/media
 //desc              Create file locally, upload the file to firebase storage and delete local file                             
 //access            Private
-
 exports.uploadFile = async (req, res) => {
     const { originalname, buffer } = req.file
     const [name, extension] = originalname.split('.')

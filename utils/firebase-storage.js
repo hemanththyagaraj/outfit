@@ -3,7 +3,7 @@ const { Storage } = require('@google-cloud/storage')
 class Firebase {
     constructor() {
         this.storage = new Storage({
-            keyFilename: `${__dirname}/outfit-7e104-firebase-adminsdk-xpbv8-0ed6e0d714.json`
+            keyFilename: `${__dirname}/outfit-7e104-firebase-adminsdk-xpbv8-0ed6e0d714.json`,
         })
         this.bucketName = 'gs://outfit-7e104.appspot.com/'
     }
@@ -12,10 +12,11 @@ class Firebase {
         return new Promise(async(resolve, reject) => {
             const { storage, bucketName } = this
             try {
-                const response = await storage.bucket(bucketName).upload(file)
+                const response = await storage.bucket(bucketName).upload(file, { predefinedAcl: 'publicRead' })
                 const [files, media] = response
                 resolve(media.mediaLink)
             } catch (error) {
+                console.log(error)
                 reject('Failed to upload your file')
             }
         })

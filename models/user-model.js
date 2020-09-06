@@ -21,6 +21,10 @@ const userSchema = mongoose.Schema({
     role: {
         type: String,
         default: 'User'
+    },
+    avatar: {
+        type: String,
+        default: "https://storage.googleapis.com/download/storage/v1/b/outfit-7e104.appspot.com/o/avatar.svg?generation=1599371973341630&alt=media"
     }
 })
 
