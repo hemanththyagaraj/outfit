@@ -32,7 +32,7 @@ html {
   font-size: 62.5%;
 }
 
-@media only screen and (min-width:600px) {
+@media only screen and (min-width: 600px) {
   html {
     font-size: 75%;
   }
@@ -48,6 +48,3 @@ html {
     font-size: 100%;
   }
 }
-
-
-
