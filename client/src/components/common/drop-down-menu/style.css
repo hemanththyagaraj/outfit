@@ -1,0 +1,31 @@
+.dropdown__menu {
+  position: absolute;
+  min-width: 5rem;
+  display: none;
+  top: 1.45rem;
+  list-style: none;
+  background-color: rgb(224, 224, 224);
+  border-radius: 5px;
+}
+
+.dropdown__item {
+  padding: 1rem;
+}
+
+.dropdown__item:first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.dropdown__item:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+.dropdown__item:hover {
+  background-color: var(--primary-green);
+}
+
+@media only screen and (max-width: 600px) {
+  .dropdown__menu {
+    position: relative;
+  }
+}
