@@ -1,15 +1,17 @@
-import Landing from "../pages/landing/landing";
-import AboutUs from "../pages/about-us/about-us";
+import React from 'react'
+
+const Landing = React.lazy(() => import ('../pages/landing/landing'))
+const AboutUs = React.lazy(() => import ('../pages/about-us/about-us'))
 
 export const routes = [
     {
         path: '/',
-        component: Landing,
+        Component: Landing,
         isProtected: false
     },
     {
         path: '/about_us',
-        component: AboutUs,
+        Component: AboutUs,
         isProtected: false
     }
 ]

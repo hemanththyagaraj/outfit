@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import Hero from "../../components/layouts/hero/hero";
+import ShopByCategory from "../../components/layouts/shop-by-category/shop-by-category";
 
 const Landing = () => {
-    return (
-        <div>
-            this is the landing page
-        </div>
-    )
-}
+  return (
+    <>
+      <Hero />
+      <ShopByCategory />
+    </>
+  );
+};
 
-export default Landing
+export default Landing;

@@ -38,6 +38,8 @@
   --text-light: #f5f5f5;
 }
 
+/* GLobal font settings */
+
 @media only screen and (min-width: 600px) {
   :root {
     font-size: 75%;
@@ -53,5 +55,20 @@
 @media only screen and (min-width: 992px) {
   :root {
     font-size: 100%;
+  }
+}
+
+/* Global animations */
+@keyframes slideFromBottom {
+  0% {
+    position: relative;
+    opacity: 0;
+    top: 20px;
+  }
+
+  100% {
+    opacity: 1;
+    position: relative;
+    top: 0;
   }
 }

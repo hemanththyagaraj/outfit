@@ -8,9 +8,12 @@ const NavItem = (props) => {
 
   return (
     <li className="nav__item">
-      <Link className="nav__link" to={`${to}`} onClick={onClick}>
-        {name}
-      </Link>
+      {!props.children && (
+        <Link className="nav__link" to={`${to}`} onClick={onClick}>
+          {name}
+        </Link>
+      )}
+      {props.children && <span>{name}</span>}
       {props.children && <span className="arrow__bottom" />}
       {props.children && <DropdownMenu>{props.children}</DropdownMenu>}
     </li>

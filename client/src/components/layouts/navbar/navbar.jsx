@@ -31,13 +31,13 @@ const Navbar = () => {
       <NavList>
         <NavItem name="Home" to="/" onClick={handleClick} />
         <NavItem name="Products" onClick={handleClick}>
-          <DropdownItem to="/men" onClick={handleClick}>
+          <DropdownItem to="/shop/men" onClick={handleClick}>
             Men
           </DropdownItem>
-          <DropdownItem to="/women" onClick={handleClick}>
+          <DropdownItem to="/shop/women" onClick={handleClick}>
             Women
           </DropdownItem>
-          <DropdownItem to="/kids" onClick={handleClick}>
+          <DropdownItem to="/shop/kids" onClick={handleClick}>
             Kids
           </DropdownItem>
         </NavItem>
