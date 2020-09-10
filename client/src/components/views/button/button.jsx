@@ -7,9 +7,12 @@ const Button = (props) => {
     size = "large",
     color = "black",
     className = "",
+    onClick,
   } = props;
   return (
     <button
+      {...props}
+      onClick={onClick}
       className={`
                 outfit__button
                 ${size}

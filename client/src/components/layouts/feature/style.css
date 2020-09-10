@@ -1,0 +1,43 @@
+.feature__container {
+  padding: 3rem 5%;
+}
+
+.feature__header {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.features__collection {
+  margin: 3rem 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.features__collection .feature {
+  width: 32%;
+}
+
+.feature img {
+  width: 2.5rem;
+}
+
+.feature .title {
+  margin-top: 1rem;
+}
+
+.feature .sub__title {
+  font-size: 1.2rem;
+  color: var(--primary-grey);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .features__collection .feature {
+    width: 100%;
+    margin: 1rem 0;
+    text-align: center;
+  }
+}
