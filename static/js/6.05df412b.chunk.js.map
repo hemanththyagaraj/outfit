@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/about-us/about-us.jsx"],"names":["AboutUs"],"mappings":"iGAAA,2BAUeA,UARC,WACZ,OACI","file":"static/js/6.05df412b.chunk.js","sourcesContent":["import React from 'react'\n\nconst AboutUs = () => {\n    return (\n        <div>\n            this is the about us page\n        </div>\n    )\n}\n\nexport default AboutUs\n"],"sourceRoot":""}
