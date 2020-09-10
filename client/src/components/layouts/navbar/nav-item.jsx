@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownMenu from "../../common/drop-down-menu/drop-down-menu";
 import "./style.css";
 
 const NavItem = (props) => {
+  const [showDropown, setShowDropdown] = useState(false);
   const { onClick, to, name } = props;
 
   return (
@@ -13,9 +14,15 @@ const NavItem = (props) => {
           {name}
         </Link>
       )}
-      {props.children && <span>{name}</span>}
+      {props.children && (
+        <span onClick={() => setShowDropdown(!showDropown)}>{name}</span>
+      )}
       {props.children && <span className="arrow__bottom" />}
-      {props.children && <DropdownMenu>{props.children}</DropdownMenu>}
+      {props.children && showDropown ? (
+        <DropdownMenu>{props.children}</DropdownMenu>
+      ) : (
+        ""
+      )}
     </li>
   );
 };

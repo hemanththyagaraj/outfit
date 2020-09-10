@@ -30,7 +30,7 @@ const Navbar = () => {
       />
       <NavList>
         <NavItem name="Home" to="/" onClick={handleClick} />
-        <NavItem name="Products" onClick={handleClick}>
+        <NavItem name="Products">
           <DropdownItem to="/shop/men" onClick={handleClick}>
             Men
           </DropdownItem>

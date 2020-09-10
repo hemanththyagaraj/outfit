@@ -1,11 +1,11 @@
 .dropdown__menu {
   position: absolute;
   min-width: 5rem;
-  display: none;
   top: 1.45rem;
   list-style: none;
   background-color: rgb(224, 224, 224);
   border-radius: 5px;
+  z-index: 1000;
 }
 
 .dropdown__item {
