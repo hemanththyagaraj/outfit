@@ -17,13 +17,14 @@ exports.login = async (req, res) => {
 
     try {
         const { email, password } = req.body
+        const userPassword = await User.findOne({ email })
         const user = await User.findOne({ email }).select('-password')
 
         //if user email does not exist
         if (!user) return res.status(401).json({ status: 'fail', message: 'User with this email does not exist' })
 
         //check if user entered and password stored in database match
-        const isMatch = await bcrypt.compare(password, user.password)
+        const isMatch = await bcrypt.compare(password, userPassword.password)
 
         // if user email does not exist or password does not match with hashed password(stored in database)
         if (!isMatch) return res.status(401).json({ status: 'fail', message: 'Invalid credentials' })
@@ -33,7 +34,7 @@ exports.login = async (req, res) => {
             if (err) throw new Error('Failed to sign the token')
             else return res.status(200).json({
                 status: 'success',
-                user: { token, ...user }
+                user: { token, ...user._doc }
             })
         })
     } catch (error) {

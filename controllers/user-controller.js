@@ -16,7 +16,8 @@ exports.registerUser = async (req, res) => {
     }
 
     try {
-        const { name, email, password, role, avatar } = req.body
+        const { name, email, password, role } = req.body
+        const { uploadUrl } = req
         const isExisting = await User.findOne({ email })
 
         if (isExisting) throw new Error('User with this email already exists')
@@ -24,9 +25,8 @@ exports.registerUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10)
         const hash = await bcrypt.hash(password, salt)
 
-        const newUser = await User.create({ name, email, password: hash, role, avatar })
-        const user = newUser._doc
-        delete user.password
+        const newUser = await User.create({ name, email, password: hash, role, avatar: uploadUrl })
+        const user = await User.find({ email }).select('-password')
 
         jwt.sign({ user: { id: newUser._id } }, process.env.JWT_SECRET, { expiresIn: 36000 }, (err, token) =>{
             if (err) throw new Error('Failed to sign the token')

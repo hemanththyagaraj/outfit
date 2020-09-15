@@ -10,7 +10,9 @@ const Hero = () => {
           <h1 className="heading__primary">
             <span className="heading__primary-sub">Buy from our</span>
             <span className="heading__primary-main">Monsoon Collection</span>
-            <Button color="var(--primary-green)" className="btn__hero">View Collection</Button>
+            <Button color="var(--primary-green)" className="btn__hero">
+              View Collection
+            </Button>
           </h1>
         </div>
       </div>

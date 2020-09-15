@@ -1,0 +1,51 @@
+.register__container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+}
+
+.register__container .header {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.register__from-field {
+  margin: 1.5rem 0;
+}
+
+.btn__register {
+  margin-top: 1rem;
+}
+
+.profilepic__container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile__picture {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .register__container {
+    width: 90%;
+    text-align: center;
+  }
+
+  .profile__picture {
+    margin: 1rem auto;
+  }
+
+  .profilepic__container {
+    flex-direction: column;
+}
+}
