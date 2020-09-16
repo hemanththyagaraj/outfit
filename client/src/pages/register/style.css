@@ -19,6 +19,10 @@
   margin-top: 1rem;
 }
 
+.btn__register:disabled {
+  filter: brightness(70%);
+}
+
 .profilepic__container {
     display: flex;
     justify-content: flex-start;

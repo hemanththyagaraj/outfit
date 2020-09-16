@@ -8,6 +8,7 @@ import Upload from "../../components/views/upload/upload";
 import Reader from "../../_helpers/reader";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -32,23 +33,34 @@ const Register = () => {
       ref.current.setCustomValidity("Passwords do not match");
       return;
     }
-
+    setLoading(true);
     createUser();
   };
 
-  const createUser = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("name", user.name);
-      formData.append("email", user.email);
-      formData.append("password", user.password);
-      formData.append("file", user.file);
+  const resetUser = () => {
+    setUser({
+      name: "",
+      password: "",
+      confirmPassword: "",
+      email: "",
+      profilePicture:
+        "https://storage.googleapis.com/download/storage/v1/b/outfit-7e104.appspot.com/o/avatar.svg?generation=1599371973341630&alt=media",
+    });
+  };
 
+  const createUser = async () => {
+    const { name, email, password, file } = user;
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    if (file) formData.append("file", file);
+    try {
       const response = await axios.post("/api/v1/users", formData);
-      debugger;
+      resetUser();
+      setLoading(false);
     } catch (error) {
-      debugger;
-      console.log(error);
+      setLoading(false);
     }
   };
 
@@ -67,7 +79,7 @@ const Register = () => {
         />
         <Upload label="Change profile picture" onChange={handleUpload} />
       </div>
-      <form className="register__form">
+      <form className="register__form" onSubmit={handleSubmit}>
         <div className="register__from-field">
           <InputRipple
             label="Name"
@@ -75,6 +87,7 @@ const Register = () => {
             id="user__name"
             name="name"
             onChange={handleChange}
+            value={user.name}
           />
         </div>
         <div className="register__from-field">
@@ -86,6 +99,7 @@ const Register = () => {
             id="user__email"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             onChange={handleChange}
+            value={user.email}
           />
         </div>
         <div className="register__from-field">
@@ -95,6 +109,7 @@ const Register = () => {
             name="password"
             onChange={handleChange}
             id="user__password"
+            value={user.password}
           />
         </div>
         <div className="register__from-field">
@@ -105,6 +120,7 @@ const Register = () => {
             name="confirmPassword"
             onChange={handleChange}
             id="confirm__password"
+            value={user.confirmPassword}
           />
         </div>
         <div className="register__from-field">
@@ -112,9 +128,9 @@ const Register = () => {
             color="var(--primary-green)"
             size="medium"
             className="btn__register"
-            onClick={handleSubmit}
+            disabled={loading}
           >
-            Register
+            {loading ? "Registering please wait..." : "Register"}
           </Button>
         </div>
       </form>
