@@ -69,8 +69,6 @@ const Register = () => {
     setUser((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  console.log('hello')
-
   return (
     <div className="register__container">
       <h2 className="header">Sign up</h2>
