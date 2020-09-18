@@ -26,14 +26,14 @@ exports.registerUser = async (req, res) => {
         const hash = await bcrypt.hash(password, salt)
 
         const newUser = await User.create({ name, email, password: hash, role, avatar: uploadUrl })
-        const user = await User.find({ email }).select('-password')
+        const user = await User.findOne({ email }).select('-password')
 
         jwt.sign({ user: { id: newUser._id } }, process.env.JWT_SECRET, { expiresIn: 36000 }, (err, token) =>{
             if (err) throw new Error('Failed to sign the token')
             else res.status(200).json({
                 status: 'success',
                 user: {
-                    ...user,
+                    ...user._doc,
                     token
                 }
             })

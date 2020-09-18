@@ -1,15 +1,23 @@
 import React from "react";
+import Reader from "../../../_helpers/reader";
 import "./upload.css";
 
 const Upload = (props) => {
-  const { size = "small", label = "", onChange, ...rest } = props;
+  const { size = "small", label = "", onChange, defaultPic = '', ...rest } = props;
 
-  const handleChange = (event) => {
-    onChange(event);
+  const handleUpload = async (event) => {
+    const file = event.target.files[0];
+    const reader = new Reader(file);
+    const result = await reader.convertToDataUrl();
+    onChange(file, result)
   };
 
   return (
-    <>
+    <div className="profilepic__container">
+      <div
+        className="profile__picture"
+        style={{ backgroundImage: `url(${defaultPic})` }}
+      />
       <label
         htmlFor="file__upload"
         className={`
@@ -19,8 +27,8 @@ const Upload = (props) => {
       >
         {label}
       </label>
-      <input type="file" id="file__upload" {...rest} onChange={handleChange} />
-    </>
+      <input type="file" id="file__upload" {...rest} onChange={handleUpload} />
+    </div>
   );
 };
 

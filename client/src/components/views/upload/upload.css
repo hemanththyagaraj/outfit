@@ -25,3 +25,29 @@
   border-radius: 2.5rem;
   font-size: 1.2rem;
 }
+
+.profilepic__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile__picture {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .profile__picture {
+    margin: 1rem auto;
+  }
+
+  .profilepic__container {
+    flex-direction: column;
+  }
+}

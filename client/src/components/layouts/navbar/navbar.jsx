@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Logo from "../../../assets/svgs/logo.svg";
 import NavList from "./nav-list";
 import NavItem from "./nav-item";
-import "./style.css";
 import DropdownItem from "../../common/drop-down-menu/drop-down-item";
+import { logout } from "../../../redux/auth/auth-actions";
+import "./style.css";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const handleCheck = (e) => {
     setIsChecked(e.target.checked);
@@ -15,6 +19,10 @@ const Navbar = () => {
   const handleClick = () => {
     setIsChecked((prevState) => !prevState);
   };
+
+  const handleLogout = () => {
+    dispatch(logout())
+  }
 
   return (
     <header className="outfit__header">
@@ -42,8 +50,14 @@ const Navbar = () => {
           </DropdownItem>
         </NavItem>
         <NavItem name="About us" to="/about_us" onClick={handleClick} />
-        <NavItem name="Login" to="/login" onClick={handleClick} />
-        <NavItem name="Register" to="/register" onClick={handleClick} />
+        {!isAuthenticated ? (
+          <>
+            <NavItem name="Login" to="/login" onClick={handleClick} />
+            <NavItem name="Register" to="/register" onClick={handleClick} />
+          </>
+        ) : (
+          <NavItem name="Logout" to="/register" onClick={handleLogout} />
+        )}
       </NavList>
       <div className="nav__background" />
     </header>
