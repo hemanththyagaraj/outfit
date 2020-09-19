@@ -1,30 +1,25 @@
 import axios from "axios";
-import {
-  LOGOUT,
-  REGISTER_FAIL,
-  REGISTER_SUCCESS,
-  REQUEST_AUTH,
-} from "./auth-types";
+import { AUTH_FAIL, AUTH_SUCCESS, CLEAR_ERROR, LOGOUT, REQUEST_AUTH } from "./auth-types";
 import { urls } from "../../config/urls";
 
 // All action creators for authentication
 
-export const request = () => {
+const request = () => {
   return {
     type: REQUEST_AUTH,
   };
 };
 
-export const registerSuccess = (user) => {
+const authSuccess = (user) => {
   return {
-    type: REGISTER_SUCCESS,
+    type: AUTH_SUCCESS,
     payload: user,
   };
 };
 
-export const registerFailure = (message) => {
+const authFailure = (message) => {
   return {
-    type: REGISTER_FAIL,
+    type: AUTH_FAIL,
     payload: message,
   };
 };
@@ -37,13 +32,36 @@ export const register = (payload) => {
         data: { user },
       } = await axios.post(urls.registerUser, payload);
       localStorage.setItem("user", JSON.stringify(user));
-      dispatch(registerSuccess(user));
+      dispatch(authSuccess(user));
     } catch (error) {
       const err = error.response;
-      dispatch(registerFailure(err.data.message));
+      dispatch(authFailure(err.data.message));
     }
   };
 };
+
+export const login = (payload) => {
+  return async (dispatch) => {
+    try {
+      const {
+        data: { user },
+      } = await axios.post(urls.login, payload);
+      localStorage.setItem("user", JSON.stringify(user));
+      dispatch(authSuccess(user));
+    } catch (error) {
+      const {
+        data: { message },
+      } = error.response;
+      dispatch(authFailure(Array.isArray(message) ? message[0].msg : message));
+    }
+  };
+};
+
+export const clearError = () => {
+  return {
+    type: CLEAR_ERROR
+  }
+}
 
 export const userLogout = () => {
   return {

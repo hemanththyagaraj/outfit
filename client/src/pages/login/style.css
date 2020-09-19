@@ -1,4 +1,21 @@
 .login__container {
-    border: 1px solid red;
-    padding: 2rem 0;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 70%;
 }
+
+
+.login__container .header {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .login__from-field {
+    margin: 1.5rem 0;
+  }
+
+  .btn__login {
+      margin-top: 2rem;
+  }

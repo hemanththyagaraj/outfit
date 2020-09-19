@@ -9,7 +9,7 @@ const OutfitBase = () => {
     <div className="outfit__base">
       <Switch>
         {routes.map((route) => {
-          const { isProtected = false, Component, path } = route;
+          const { isProtected = false, component: Component, path } = route;
           return !isProtected ? (
             <Route
               key={path}

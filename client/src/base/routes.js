@@ -8,22 +8,22 @@ const Register = React.lazy(() => import('../pages/register/register'))
 export const routes = [
     {
         path: '/',
-        Component: Landing,
+        component: Landing,
         isProtected: false
     },
     {
         path: '/about_us',
-        Component: AboutUs,
+        component: AboutUs,
         isProtected: false
     },
     {
         path:'/login',
-        Component: Login,
+        component: Login,
         isProtected: false
     },
     {
         path: '/register',
-        Component: Register,
+        component: Register,
         isProtected: false
     }
 ]

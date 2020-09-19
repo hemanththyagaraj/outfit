@@ -1,9 +1,4 @@
-import {
-  LOGOUT,
-  REGISTER_FAIL,
-  REGISTER_SUCCESS,
-  REQUEST_AUTH,
-} from "./auth-types";
+import { AUTH_FAIL, AUTH_SUCCESS, CLEAR_ERROR, LOGOUT, REQUEST_AUTH } from "./auth-types";
 
 const initialState = {
   loading: false,
@@ -17,7 +12,7 @@ const authReducer = (state = initialState, action) => {
     case REQUEST_AUTH:
       return { ...state, loading: true, error: null };
 
-    case REGISTER_SUCCESS:
+    case AUTH_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -26,7 +21,7 @@ const authReducer = (state = initialState, action) => {
         error: null,
       };
 
-    case REGISTER_FAIL:
+    case AUTH_FAIL:
       return {
         ...state,
         loading: false,
@@ -39,6 +34,12 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: false,
         user: null,
         loading: false,
+        error: null,
+      };
+
+    case CLEAR_ERROR:
+      return {
+        ...state,
         error: null,
       };
 

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import withSignUpCard from "../../components/hocs/with-signup-card";
+import { useHistory } from 'react-router-dom'
+import withSignUpCard from "../../components/hocs/with-signup-card/with-signup-card";
 import InputRipple from "../../components/views/input-ripple/input-ripple";
 import Button from "../../components/views/button/button";
 import Upload from "../../components/views/upload/upload";
-import { register } from "../../redux/auth/auth-actions";
+import { register, clearError } from "../../redux/auth/auth-actions";
+import { AlertContext } from "../../context/alert/alert-state";
 import "./style.css";
 
 const Register = () => {
@@ -21,7 +23,8 @@ const Register = () => {
   const [user, setUser] = useState(userOutline);
 
   const ref = React.createRef();
-
+  const history = useHistory()
+  const { setAlert } = useContext(AlertContext);
   // central store
   const dispatch = useDispatch();
   const { loading, error, isAuthenticated } = useSelector(
@@ -42,8 +45,15 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated) setUser(userOutline);
-    else if (error) window.alert(error);
+    if (isAuthenticated) {
+      setUser(userOutline);
+      history.push('/')
+    } 
+    else if (error) {
+      setAlert("error", error);
+      dispatch(clearError());
+    }
+    // eslint-disable-next-line
   }, [error, isAuthenticated]);
 
   const registerUser = async () => {

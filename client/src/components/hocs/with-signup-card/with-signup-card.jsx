@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./with-signup-card.css";
 
 const withSignUpCard = (Component) => {
   return () => {

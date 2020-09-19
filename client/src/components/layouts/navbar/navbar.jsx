@@ -9,7 +9,9 @@ import "./style.css";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const avatar = isAuthenticated ? `"${user.avatar}"` : ''
+
   const dispatch = useDispatch();
 
   const handleCheck = (e) => {
@@ -21,8 +23,8 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout())
-  }
+    dispatch(logout());
+  };
 
   return (
     <header className="outfit__header">
@@ -56,7 +58,16 @@ const Navbar = () => {
             <NavItem name="Register" to="/register" onClick={handleClick} />
           </>
         ) : (
-          <NavItem name="Logout" to="/register" onClick={handleLogout} />
+          <>
+            <NavItem name="Logout" to="/" onClick={handleLogout} />
+            <div className="nav__profile-info">
+              <div
+                className="nav__profile-img"
+                style={{ backgroundImage: `url(${avatar})` }}
+              />
+              <span className="nav__profile-name">{user ? user.name : ""}</span>
+            </div>
+          </>
         )}
       </NavList>
       <div className="nav__background" />
