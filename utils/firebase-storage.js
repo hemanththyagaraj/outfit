@@ -16,7 +16,6 @@ class Firebase {
                 const [files, media] = response
                 resolve(media.mediaLink)
             } catch (error) {
-                console.log(error)
                 reject('Failed to upload your file')
             }
         })
