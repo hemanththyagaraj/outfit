@@ -3,7 +3,7 @@ import Logo from "../../../assets/svgs/logo__light.svg";
 import Git from "../../../assets/svgs/github.svg";
 import Twitter from "../../../assets/svgs/twitter.svg";
 import Instagram from "../../../assets/svgs/instagram.svg";
-import "./style.css";
+import "./footer.css";
 
 const Footer = () => {
   const handleRedirect = (event) => {

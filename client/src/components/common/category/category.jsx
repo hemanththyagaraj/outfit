@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../../views/button/button";
-import "./style.css";
+import "./category.css";
 
 const Category = (props) => {
   const history = useHistory();

@@ -7,7 +7,7 @@ import Button from "../../components/views/button/button";
 import Upload from "../../components/views/upload/upload";
 import { register, clearError } from "../../redux/auth/auth-actions";
 import { AlertContext } from "../../context/alert/alert-state";
-import "./style.css";
+import "./register.css";
 
 const Register = () => {
   const userOutline = {

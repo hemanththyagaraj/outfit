@@ -2,7 +2,7 @@ import React from "react";
 import Dress from "../../../assets/images/dress.png";
 import Pay from "../../../assets/images/credit-card.png";
 import Truck from "../../../assets/images/truck.png";
-import "./style.css";
+import "./feature.css";
 
 const Feature = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownMenu from "../../common/drop-down-menu/drop-down-menu";
-import "./style.css";
+import "./navbar.css";
 
 const NavItem = (props) => {
   const [showDropown, setShowDropdown] = useState(false);

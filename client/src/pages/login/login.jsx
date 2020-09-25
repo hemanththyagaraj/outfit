@@ -6,7 +6,7 @@ import Button from "../../components/views/button/button";
 import InputRipple from "../../components/views/input-ripple/input-ripple";
 import { AlertContext } from "../../context/alert/alert-state";
 import { login, clearError } from "../../redux/auth/auth-actions";
-import "./style.css";
+import "./login.css";
 
 const Login = () => {
   const [user, setUser] = useState({

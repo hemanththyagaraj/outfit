@@ -5,7 +5,7 @@ import NavList from "./nav-list";
 import NavItem from "./nav-item";
 import DropdownItem from "../../common/drop-down-menu/drop-down-item";
 import { logout } from "../../../redux/auth/auth-actions";
-import "./style.css";
+import "./navbar.css";
 
 const Navbar = () => {
   const [isChecked, setIsChecked] = useState(false);

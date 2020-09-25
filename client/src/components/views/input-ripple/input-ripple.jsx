@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./input-ripple.css";
 
 const InputRipple = React.forwardRef((props, ref) => {
   const { type = "text", label = "label", id, onChange, ...rest } = props;
