@@ -18,6 +18,12 @@
   transform: translateY(0);
 }
 
+.outfit__button:disabled {
+  filter: grayscale(80%);
+  /* background-color: grey !important; */
+  cursor: not-allowed;
+}
+
 .small {
   padding: 0.5rem 1rem;
   border-radius: 1.5rem;

@@ -1,39 +1,99 @@
 .newproduct__container {
-    width: 100%;
-    height: 92vh;
-    position: relative;
-  }
+  width: 100%;
+  height: 92vh;
+  position: relative;
+}
 
-  .newproduct__card {
-    width: 80%;
-    height: 85vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.newproduct__card {
+  width: 80%;
+  height: 85vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.panel-left {
+  width: 30%;
+  position: relative;
+}
+
+.panel-right {
+  width: 70%;
+  padding: 2rem;
+}
+
+.panel-right form .title {
+  text-align: center;
+}
+
+.panel-right > form > .row {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.panel-right > form > .row > .col {
+  width: 49%;
+}
+
+.textarea {
+  width: 100%;
+    padding: 0.7rem 1rem;
+    font-size:1rem;
+    border: none;
     border-radius: 2rem;
-    box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.25);
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25), 0px 0px 3px 2px rgba(77, 77, 77, 0.2);
+}
 
+.product__image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: auto;
+}
+
+@media only screen and (max-width: 600px) {
   .panel-left {
-      width: 30%;
+    width: 100%;
+    height: 20%;
   }
 
   .panel-right {
-      width: 70%;
+    width: 100%;
+    height: 80%;
   }
 
-  @media only screen and (max-width: 600px) {
-      .panel-left {
-          width: 100%;
-          height: 20%;
-      }
-
-      .panel-right {
-          width: 100%;
-          height: 80%;
-      }
+  .btn__product-upload {
+    width: 100%;
   }
+
+  .panel-right form .title {
+    margin-bottom: 1rem;
+  }
+
+  .panel-right > form .row {
+    flex-direction: column;
+    margin-top: 0rem;
+  }
+
+  .panel-right > form > .row > .col {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn__addproduct {
+    margin-top: 2rem;
+  }
+
+  .product__image {
+    width: 60%;
+  }
+}

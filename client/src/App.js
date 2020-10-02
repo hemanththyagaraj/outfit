@@ -6,8 +6,9 @@ import setAuthToken from "./config/set-auth-token";
 import AlertProvider from "./context/alert/alert-state";
 
 function App() {
+  const { token } = JSON.parse(localStorage.getItem('user')) || {}
   //set global token for all protected requests
-  setAuthToken();
+  setAuthToken(token);
 
   return (
     <Router>

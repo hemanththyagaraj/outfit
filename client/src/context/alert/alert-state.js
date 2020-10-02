@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-import Alert from "../../components/hocs/with-alert/alert";
+import Alert from "../../components/views/alert/alert";
 import alertReducer from "./alert-reducer";
 import { HIDE_ALERT, SHOW_ALERT } from "./alert-types";
 
